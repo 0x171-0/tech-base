@@ -1,3 +1,6 @@
+**Warning: this project is under refactoring...😅
+**
+
 # TechBase
 
 ###### Tech Trend Of News Tracking Website
@@ -14,18 +17,33 @@
 
 ## Table of Contents
 
-- [Main Features](#Main-Features)
-- [Technologies](#Technologies)
-- [Architecture](#Architecture)
-- [Data Pipeline](#Data-Pipeline)
-- [Demonstration](#Demonstration)
-  - [Home page](#Home-page)
-  - [News Timeline page](#News-Timeline-page)
-  - [News Analysis Page](#News-Analysis-Page)
-  - [Profile page](#Profile-page)
-  - [Public page](#Public-page)
-- [Database Schema](#Database-Schema)
-- [Contact](#Contact)
+- [TechBase](#techbase)
+          - [Tech Trend Of News Tracking Website](#tech-trend-of-news-tracking-website)
+          - [Website URL: https://techbase.white-100.online/](#website-url-httpstechbasewhite-100online)
+          - [Please use Chrome to open the website.](#please-use-chrome-to-open-the-website)
+  - [Table of Contents](#table-of-contents)
+  - [Main Features](#main-features)
+  - [Technologies](#technologies)
+    - [Backend](#backend)
+    - [Front-End](#front-end)
+    - [Cloud Service (AWS)](#cloud-service-aws)
+    - [Database](#database)
+    - [Tools](#tools)
+    - [Logs System](#logs-system)
+    - [Others](#others)
+  - [Architecture](#architecture)
+  - [Data Pipeline](#data-pipeline)
+  - [Demonstration](#demonstration)
+    - [Home page](#home-page)
+    - [News Timeline page](#news-timeline-page)
+    - [News Analysis Page](#news-analysis-page)
+    - [Profile page](#profile-page)
+    - [Public page](#public-page)
+  - [Database Schema](#database-schema)
+      - [News data Sturcture](#news-data-sturcture)
+      - [User data Sturcture](#user-data-sturcture)
+      - [Dictionary data Sturcture](#dictionary-data-sturcture)
+  - [Contact](#contact)
 
 ## Main Features
 
