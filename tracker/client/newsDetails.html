@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>TechBase</title>
+		<link rel="icon" type="image/png"
+			href="https://s3-ap-northeast-1.amazonaws.com/white-100.online/TechBase/assets/trail-sign-outline.svg" />
+
+		<script src="https://d3js.org/d3.v4.js"></script>
+		<!-- Load d3-cloud -->
+		<script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
+		<script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+		<script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+		<script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+		<link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+		<link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css"
+			rel="stylesheet">
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+
+		<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+
+		<link rel="stylesheet" href="./css/newsDetails/index.css" type="text/css">
+		<link rel="stylesheet" href="./css/postForm.css" type="text/css">
+		<link rel="stylesheet" href="./css/main.css" type="text/css">
+		<link rel="stylesheet" href="./css/input.css" type="text/css">
+		<link rel="stylesheet" href="./css/button.css" type="text/css">
+		<link rel="stylesheet" href="./css/components/tab.css" type="text/css">
+
+
+		<script src="./js/newsDetails/relatedNews.js" type="module" defer></script>
+		<script src="./js/newsDetails/index.js" type="module" defer></script>
+		<script src="./js/newsDetails/commentSystem.js" type="module" defer></script>
+		<script src="./js/newsDetails/reviewSystem.js" type="module" defer></script>
+
+		<script src="./js/components/nav.js" type="module" defer></script>
+		<script src="./js/components/registerSystem.js" type="module" defer></script>
+		<script src="./js/components/loading.js" type="module" defer></script>
+
+	</head>
+
+	<body>
+
+		<template>
+			<div class="content">
+				<p>Paragraph ...</p>
+				<div class="emojiBtnDiv">
+					<form>
+						<input required="" maxlength="20" placeholder="Type some comments here  :D ...">
+						<button>Send</button>
+					</form>
+					<div class="paragraphEmoji">
+					</div>
+				</div>
+			</div>
+		</template>
+
+		<template>
+			<span class="emojiSpan">
+				<span class="emojiText">👍</span>
+				<span class="emojiCount">0</span>
+			</span>
+		</template>
+
+		<template>
+			<div class="relatedNewsContainer">
+				<a class="clipCorner"></a>
+				<a class="relatedNewsInfoContainer" href="">
+					<div class="relTime">2020-09-22</div>
+					<h6 class="relTitle">Related News Title</h6>
+					<p class="relContent">Relate news news</p>
+
+				</a>
+				<div class="clip">
+					<svg width="1.5em" height="1.1em" viewBox="0 0 16 16" class="bi bi-paperclip" fill="currentColor"
+						xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd"
+							d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z">
+						</path>
+					</svg>
+				</div>
+			</div>
+		</template>
+
+		<tech-nav></tech-nav>
+		<sign-form></sign-form>
+
+		<div class="newsBoard tabsBox">
+
+			<ul class="tabNavBar">
+				<div class="tab" id="activeTab"><a>NEWS</a></div>
+				<div class="tab"><a>ANALYSIS</a></div>
+				<div class="tab"><a>RELATED</a></div>
+			</ul>
+
+			<div class="tabContain" id="activeTabContainer">
+				<div class="toolBar">
+					<a class="postIcon" id="Posts">
+						<svg width="1.25em" height="1.25em" viewBox="0 0 16 16" class="bi bi-chat-left-dots"
+							fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd"
+								d="M14 1H2a1 1 0 0 0-1 1v11.586l2-2A2 2 0 0 1 4.414 11H14a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+							<path
+								d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+						</svg></a>
+					<a class="bookmarkIcon" id="Bookmarks">
+						<svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-bookmark-plus"
+							fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd"
+								d="M4.5 2a.5.5 0 0 0-.5.5v11.066l4-2.667 4 2.667V8.5a.5.5 0 0 1 1 0v6.934l-5-3.333-5 3.333V2.5A1.5 1.5 0 0 1 4.5 1h4a.5.5 0 0 1 0 1h-4zm9-1a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1H13V1.5a.5.5 0 0 1 .5-.5z" />
+							<path fill-rule="evenodd"
+								d="M13 3.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0v-2z" />
+						</svg> </a>
+					<a id="goSourceWeb" href="">
+						<svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-box-arrow-in-up-right"
+							fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd"
+								d="M14.5 3A1.5 1.5 0 0 0 13 1.5H3A1.5 1.5 0 0 0 1.5 3v5a.5.5 0 0 0 1 0V3a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v10a.5.5 0 0 1-.5.5H9a.5.5 0 0 0 0 1h4a1.5 1.5 0 0 0 1.5-1.5V3z" />
+							<path fill-rule="evenodd"
+								d="M4.5 6a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V6.5H5a.5.5 0 0 1-.5-.5z" />
+							<path fill-rule="evenodd"
+								d="M10.354 5.646a.5.5 0 0 1 0 .708l-8 8a.5.5 0 0 1-.708-.708l8-8a.5.5 0 0 1 .708 0z" />
+						</svg> </a>
+				</div>
+
+				<div class="commentsBackground">
+					<ul class="comment-thread">
+					</ul>
+				</div>
+
+				<span id='publisher'></span>
+				<span id='publishDate'></span>
+				<h1 class="tabTitle"></h1>
+
+				<div class="loadContent chartLoading">
+					<section></section>
+				</div>
+				<div class="newsContainer">
+
+				</div>
+			</div>
+
+			<div class="tabContain">
+				<h1 class="tabTitle">ANALYSIS REPORT</h1>
+				<h1 class="mainEmoji"></h1>
+				<div class="wrapCloudRow">
+					<div class="compareContainer">
+						<div class="compareScore"></div>
+						<div class="bar"></div>
+					</div>
+					<br>
+				</div>
+				<div class="wrapCloudContainer">
+					<div class="wrapCloudRow">
+						<div class="wrapCloud">
+							<h6 class="infoTitle">POSITIVES</h6>
+							<div id="positive"></div>
+						</div>
+						<div class="wrapCloud negative">
+							<h6 class="infoTitle">NEGATIVES</h6>
+							<div id="negative"></div>
+						</div>
+					</div>
+					<div class="wrapCloudRow">
+						<div class="wrapCloud">
+							<h6 class="infoTitle">TERMS</h6>
+							<div id="terms"></div>
+						</div>
+						<div class="wrapCloud behaviors">
+							<h6 class="infoTitle">BEHAVIORS</h6>
+							<div id="behaviors"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="lineChartWrap">
+					<div id='lineChartByday'>
+					</div>
+					<div class="block"></div>
+				</div>
+				<div class="lineChartWrap">
+					<div id='lineChartByWeek'>
+					</div>
+					<div class="block"></div>
+				</div>
+				<div class="lineChartWrap">
+					<div id='lineChartByMonth'>
+					</div>
+					<div class="block"></div>
+				</div>
+
+				<div class="loadContent chartLoading">
+					<section></section>
+				</div>
+			</div>
+
+			<div class="tabContain">
+				<h1 class="tabTitle">Related News</h1>
+				<div class="relContainer">
+				</div>
+			</div>
+
+			<div class="reviewSystemContainer bounce">
+				<div class="uploadSuccessContainer bounce">
+					<img src="https://s3-ap-northeast-1.amazonaws.com/white-100.online/TechBase/assets/checkmark-circle-outline.svg"
+						alt="">
+				</div>
+				<div class="toolBar">
+					<a class="closeIcon">
+						<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor"
+							xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd"
+								d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
+							<path fill-rule="evenodd"
+								d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
+						</svg>
+					</a>
+				</div>
+				<div class="reviewSystemFormHeader">
+					<h6 id="reviewSystemTheme"></h6>
+				</div>
+				<form class="reviewSystemForm" name='provider' value="native">
+					<div class="form-column">
+						<div class="form-column-name">
+							<span class="form-column-number">1</span>
+							<span class="form-column-title">Title</span>
+						</div>
+						<input id="form-column-title-input" type="text" name="commentTitle" placeholder="Title"
+							required="required" />
+					</div>
+					<div class="form-column">
+						<div class="form-column-name">
+							<span class="form-column-number">2</span>
+							<span class="form-column-title">Content</span>
+						</div>
+						<textarea id="form-column-content-text-area" name="comment" placeholder="Content"></textarea>
+					</div>
+					<div class="form-column">
+						<div class="form-column-name">
+							<span class="form-column-number">3</span>
+							<span class="form-column-title">Folder</span>
+						</div>
+						<div class="form-column-folder">
+							<select class="round" name="folder">
+								<option>Default</option>
+							</select>
+							<input type="text" class="round" id="inputFolder" name="folderNew" placeholder="+" />
+						</div>
+					</div>
+					<div class="form-column">
+						<button name='bookmark' value="bookmark" type="submit" class="submit">Save</button>
+					</div>
+				</form>
+			</div>
+
+			<div class="reviewSystemBackground"></div>
+
+	</body>
+
+</html>

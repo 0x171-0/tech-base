@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>TechBase</title>
+		<link rel="icon" type="image/png"
+			href="https://s3-ap-northeast-1.amazonaws.com/white-100.online/TechBase/assets/trail-sign-outline.svg" />
+
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js" defer></script>
+
+		<link rel="stylesheet" href="./css/main.css" type="text/css">
+		<link rel="stylesheet" href="./css/timeline.css" type="text/css">
+		<link rel="stylesheet" href="./css/animations/loading.css" type="text/css">
+
+		<script src="./js/timeline.js" type="module" defer></script>
+		<script src="./js/components/nav.js" defer></script>
+		<script src="./js/components/stars.js" defer></script>
+		<script src="./js/components/loading.js" type="module" defer></script>
+	</head>
+
+	<body>
+		<template>
+			<li>
+				<div class="direction">
+					<div class="time-wrapper">
+						<div class="time">2021-02-03</div>
+					</div>
+
+					<div class="flag-wrapper">
+						<span class="flag">Big Title...</span>
+					</div>
+
+					<div class="desc">
+						First paragraph...
+					</div>
+
+					<span class="desc">
+						<div class="tags">
+						</div>
+					</span>
+				</div>
+			</li>
+		</template>
+
+		<scattered-stars></scattered-stars>
+		<tech-nav></tech-nav>
+
+		<div id="newsWapper">
+			<a href="./timeline.html">
+				<img src="https://s3-ap-northeast-1.amazonaws.com/white-100.online/TechBase/assets/UFO.png" id="UFO"
+					class="float">
+			</a>
+
+
+			<form id="searchForm">
+				<input type="text" class='timelineTitle blink' placeholder="NEWS TIMELINE " autocomplete="off"
+					name="search" autofocus>
+				<div id='wrapTimeSearch'>
+					<input name="startTime" class="newsDate startTime" type="date">
+					<input name="endTime" class="newsDate endTime" type="date">
+					<button id="search" value="Search">
+						<svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"
+							xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd"
+								d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+							<path fill-rule="evenodd"
+								d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+						</svg>
+					</button>
+				</div>
+			</form>
+
+			<ul class="timeline">
+			</ul>
+
+			<div class="loading">
+				<section></section>
+			</div>
+		</div>
+
+	</body>
+
+</html>

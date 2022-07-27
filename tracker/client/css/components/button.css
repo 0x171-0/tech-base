@@ -1,0 +1,74 @@
+button {
+	padding: 5px 8px;
+	font-family: 'Quicksand', sans-serif;
+	border-radius: 2px;
+	border: 0.01px var(--pop-color); solid;
+	color: var(--pop-color);;
+	background: transparent;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	margin: 10px 5px;
+	outline: none;
+	cursor: pointer;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-ms-border-radius: 2px;
+	-o-border-radius: 2px;
+	box-sizing: border-box;
+}
+
+button:hover {
+	animation: flicker2 0.1s infinite alternate;
+	color: #000;
+	background: var(--pop-color);;
+	border: 0.01px #ffffff solid;
+	box-shadow: 0 0 10px #00e1ff;
+	box-sizing: border-box;
+	transition: width 0.1s;
+	-webkit-transition: width 0.1s;
+	-moz-transition: width 0.1s;
+	-ms-transition: width 0.1s;
+	-o-transition: width 0.1s;
+	-webkit-animation: flicker2 0.1s infinite alternate;
+}
+
+button:active {
+	font-weight: bold;
+	background-color: black;
+	color: white;
+	transition: width 0.1s;
+	-webkit-transition: width 0.1s;
+	-moz-transition: width 0.1s;
+	-ms-transition: width 0.1s;
+	-o-transition: width 0.1s;
+}
+
+button:visited {
+	font-weight: bold;
+	border: 1px solid blue;
+}
+
+.facebookLogInBtn {
+	border: none;
+	color: white;
+	background-color: #5376b8;
+	width: calc(30%);
+}
+
+.facebookLogInBtn:hover {
+	background-color: #285094;
+	color: white;
+}
+
+.googleLogInBtn {
+	border: none;
+	background-color: #cc6504;
+	color: white;
+	width: calc(30%);
+	margin-left: 5px;
+}
+
+.googleLogInBtn:hover {
+	color: #ffffff;
+	background-color: #e98c34;
+}

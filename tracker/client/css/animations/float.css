@@ -1,0 +1,29 @@
+.float {
+	transform: rotate(-3deg);
+	-webkit-transform: rotate(-3deg);
+	-moz-transform: rotate(-3deg);
+	-ms-transform: rotate(-3deg);
+	-o-transform: rotate(-3deg);
+	animation: float 6s ease-in-out infinite;
+	-webkit-animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+	0% {
+		transform: translatey(0px, 3deg);
+		-webkit-transform: translatey(0px, 3deg);
+		-moz-transform: translatey(0px, 3deg);
+		-ms-transform: translatey(0px, 3deg);
+		-o-transform: translatey(0px, 3deg);
+	}
+	50% {
+		transform: translatey(-20px);
+	}
+	100% {
+		transform: translatey(0px, -3deg);
+		-webkit-transform: translatey(0px, -3deg);
+		-moz-transform: translatey(0px, -3deg);
+		-ms-transform: translatey(0px, -3deg);
+		-o-transform: translatey(0px, -3deg);
+	}
+}

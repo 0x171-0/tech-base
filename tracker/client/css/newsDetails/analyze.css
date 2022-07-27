@@ -1,0 +1,43 @@
+.negative,
+.behaviors {
+	margin-left: 10px;
+}
+
+.mainEmoji {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	width: 200px;
+	height: 200px;
+	background-color: #00ff00;
+	border-radius: 50%;
+	font-size: 160px;
+	margin: 0px 10px 20px 10px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	-o-border-radius: 50%;
+}
+
+.wrapCloudContainer {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.wrapCloudRow {
+	display: flex;
+	width: 100%;
+	margin: 0;
+}
+
+.wrapCloud {
+	margin-top: 30px;
+	width: 100%;
+}
+
+.comment {
+	padding: 10px;
+	margin-bottom: 20px;
+	background-color: rgb(216, 255, 242);
+}

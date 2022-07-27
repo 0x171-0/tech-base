@@ -1,0 +1,17 @@
+.blink {
+	animation: blink-animation 0.5s infinite;
+	-webkit-animation: blink-animation 0.5s infinite;
+	animation-direction: alternate;
+}
+
+@keyframes blink-animation {
+	from {
+		box-shadow: -1px 0px 10px rgb(0, 255, 255), -1px -1px 10px rgb(58, 63, 63),
+			2px 3px 8px blue, 0px 3px 8px blue;
+	}
+
+	to {
+		box-shadow: -1px 0px 15px rgb(189, 255, 255), -1px -1px 15px rgb(58, 63, 63),
+			2px 3px 8px blue, 0px 3px 8px blue;
+	}
+}

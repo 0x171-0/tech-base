@@ -1,0 +1,18 @@
+.lineChartWrap {
+	position: relative;
+}
+
+#lineChartByday {
+	height: 300px;
+	width: 700px;
+}
+
+#lineChartByWeek {
+	height: 300px;
+	width: 700px;
+}
+
+#lineChartByMonth {
+	height: 300px;
+	width: 700px;
+}

@@ -1,0 +1,179 @@
+/* Main nav */
+
+ion-icon,
+.icon {
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+	--ionicon-stroke-width: 35px;
+}
+
+#logo,
+#logo a {
+	color: var(--pop-color);
+	font-family: 'Share Tech Mono', monospace;
+	font-size: 20px;
+	margin-left: 30px;
+	align-self: start;
+	padding-bottom: 0;
+	z-index: 2;
+	margin-right: auto;
+	letter-spacing: 3px;
+	text-decoration: none;
+}
+
+#nav {
+	display: flex;
+	margin: 5px;
+	font-family: 'Share Tech Mono', monospace;
+}
+
+/* Main Nav Button */
+
+#nav a.navButton {
+	z-index: 2;
+	width: 45px;
+	height: 45px;
+	border-radius: 50%;
+	font-family: 'Share Tech Mono', monospace;
+	color: var(--pop-color);
+	background: transparent;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	outline: none;
+	margin-right: 10px;
+	cursor: pointer;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	-o-border-radius: 50%;
+	box-sizing: border-box;
+}
+
+#nav a.navButton:hover {
+	margin-right: 10px;
+	color: #000;
+	background: var(--pop-color);
+	border: 0.01px #ffffff solid;
+	/*box-shadow: 0 0 20px rgba(0, 255, 0, 0.5),		rgba(0, 255, 0, 0.5);
+	*/
+	box-shadow: 0 0 10px #00e1ff;
+	width: 48px;
+	height: 48px;
+	box-sizing: border-box;
+	animation: flicker2 0.1s infinite alternate;
+	transition: width 0.1s;
+	-webkit-transition: width 0.1s;
+	-moz-transition: width 0.1s;
+	-ms-transition: width 0.1s;
+	-o-transition: width 0.1s;
+	-webkit-animation: flicker2 0.1s infinite alternate;
+}
+
+#nav a.navButton:active {
+	margin-right: 10px;
+
+	font-weight: bold;
+	background-color: transparent;
+	color: white;
+	width: 48px;
+	height: 48px;
+	transition: width 0.1s;
+	-webkit-transition: width 0.1s;
+	-moz-transition: width 0.1s;
+	-ms-transition: width 0.1s;
+	-o-transition: width 0.1s;
+}
+
+/* Tool Bar */
+
+#topNavBar {
+	background-color: transparent;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	margin-right: 10px;
+	padding-right: 20px;
+}
+
+#topNavBar a:hover:before {
+	position: absolute;
+	text-align: center;
+	padding: 3px 5px;
+	background-color: black;
+	color: white;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+}
+
+#topNavBar a:hover:before {
+	top: 65px;
+	font-size: 14px;
+}
+
+.analysisTotal:hover:before {
+	content: '趨勢總分析';
+	width: 100px;
+}
+
+.newsTimeline:hover:before {
+	content: '新聞時光機';
+	width: 100px;
+}
+
+.profilePage:hover:before {
+	content: '個人基地站';
+	width: 100px;
+}
+
+.getHistory:hover:before {
+	content: '瀏覽記錄';
+	width: 65%;
+}
+
+.watchLater:hover:before {
+	content: '稍後觀看';
+	width: 65%;
+}
+
+#Bookmark:hover:before {
+	content: '私藏文章';
+	width: 40%;
+}
+
+#Post:hover:before {
+	content: '公開貼文';
+	width: 40%;
+}
+
+#goSourseWeb:hover:before {
+	content: '看原文章';
+	width: 40%;
+}
+
+.postsLabelWrap:hover:before {
+	content: '貼文資料夾';
+	width: 80px;
+}
+
+.booksLabelWrap:hover:before {
+	content: '書籤資料夾';
+	width: 80px;
+}
+
+.booksFolderDelete:hover:before {
+	content: '刪除資料夾';
+	width: 80%;
+}
+
+.postsFolderDelete:hover:before {
+	content: '刪除資料夾';
+	width: 80px;
+}

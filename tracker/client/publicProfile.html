@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="_csrf" th:content="${_csrf.token}" />
+		<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+
+		<title>TechBase</title>
+		<link rel="icon" type="image/png"
+			href="https://s3-ap-northeast-1.amazonaws.com/white-100.online/TechBase/assets/trail-sign-outline.svg" />
+
+		<link href="./css/main.css" type="text/css" rel="stylesheet">
+		<link href="./css/profile.css" type="text/css" rel="stylesheet">
+
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9" defer></script>
+
+		<script src="./js/public.js" type="module" defer></script>
+		<script src="./js/components/nav.js" defer></script>
+	</head>
+
+	<body>
+		<tech-nav></tech-nav>
+		<div class="container">
+			<ul class="tabNavBar">
+				<div id="tab1" class="tab"><a data-toggle="modal" data-target="#popup">POSTS</a></div>
+			</ul>
+
+			<div class="tabContain tabContain1">
+				<section>
+					<div class='userMain'>
+						<div class="userLeft">
+							<div>
+								<div class="userImg">
+									<svg class="userImgDefault" width="9em" height="9em" viewBox="0 0 16 16"
+										class="bi bi-person-fill" fill="currentColor"
+										xmlns="http://www.w3.org/2000/svg">
+										<path fill-rule="evenodd"
+											d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+									</svg>
+
+									<img id="userImg" src="" alt="">
+								</div>
+							</div>
+							<div class="userText">
+								<div>
+
+									<div id="userDiv">
+										<span class="followBtn">
+											<svg width="1.1em" height="1.1em" viewBox="0 0 16 16" class="bi bi-star"
+												fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+												<path fill-rule="evenodd"
+													d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+											</svg>
+										</span>
+										<h1 class="userName"></h1>
+
+									</div>
+								</div>
+								<textarea class="userIntro" maxlength="50">這人很懶沒有寫介紹</textarea>
+							</div>
+						</div>
+
+						<div class="userRight">
+							<div class="infoSum">
+								<h3 class="sumtitle">Posts</h3>
+								<h3 class="sumNum postsSum">0</h3>
+							</div>
+							<div class="infoSum">
+								<h3 class="sumtitle">Followers</h3>
+								<h3 class="sumNum followSum">0</h3>
+							</div>
+							<div class="infoSum">
+								<h3 class="sumtitle">Bookmarks</h3>
+								<h3 class="sumNum bookSum">0</h3>
+							</div>
+						</div>
+					</div>
+
+					<div class="folderDiv">
+						<span class='folder'>Folders of posts : </span>
+						<span class='postsFolderTitle'>All</span>
+					</div>
+				</section>
+
+				<div class="toolBar">
+					<a class='postsLabelWrap'>
+						<label for="" class="postsLabel">
+							<select class="postsFolder" name="postsFolder" autofocus>
+								<option>All</option>
+								<option>Default</option>
+							</select>
+							<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder" fill="currentColor"
+								xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M9.828 4a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 6.173 2H2.5a1 1 0 0 0-1 .981L1.546 4h-1L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3v1z" />
+								<path fill-rule="evenodd"
+									d="M13.81 4H2.19a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zM2.19 3A2 2 0 0 0 .198 5.181l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3H2.19z" />
+							</svg>
+						</label>
+					</a>
+				</div>
+
+				<div class="noMoreDataPost noMoreData">
+					<img src="https://s3-ap-northeast-1.amazonaws.com/white-100.online/TechBase/assets/noMoreData.png"
+						alt="">
+					<span>There is no more data...</span>
+				</div>
+
+				<div class="postContainer proContainer" id="postContainer">
+				</div>
+			</div>
+	</body>
+
+</html>

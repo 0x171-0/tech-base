@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>TechBase</title>
+
+		<link rel="icon" type="image/png"
+			href="https://s3-ap-northeast-1.amazonaws.com/white-100.online/TechBase/assets/trail-sign-outline.svg" />
+
+		<link rel="stylesheet" type="text/css" href="./css/main.css" />
+		<link rel="stylesheet" type="text/css" href="./css/index.css" />
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js" defer></script>
+		<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+		<script src="https://cdn.anychart.com/samples/tag-cloud/the-old-man-and-the-sea/ignore-items.js"></script>
+		<script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+		<script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+		<script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+		<script src="https://cdn.anychart.com/releases/v8/js/anychart-tag-cloud.min.js"></script>
+		<script src="https://cdn.anychart.com/releases/v8/themes/dark_blue.min.js"></script>
+
+		<link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet" />
+		<link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css"
+			rel="stylesheet" />
+
+		<script src="./js/chart/topTagsCloudChart.js" type="module" defer></script>
+		<script src="./js/components/nav.js" defer></script>
+		<script src="./js/components/stars.js" defer></script>
+
+	</head>
+
+	<body>
+		<div id="wrapper">
+
+			<tech-nav></tech-nav>
+
+
+			<div class="mainPageTitle">
+				<h1 class="">
+					A Better way to<br />
+					get tech trends.
+				</h1>
+
+				<a class="arrow blink">
+					<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-capslock-fill" fill="currentColor"
+						xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd"
+							d="M7.27 1.047a1 1 0 0 1 1.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H11.5v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1H1.654C.78 9.5.326 8.455.924 7.816L7.27 1.047zM4.5 13.5a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1z" />
+					</svg>
+				</a>
+			</div>
+
+			<div id="cloud">
+				<div id="borderD"></div>
+				<div id="container">
+					<block id="blockLogo"></block>
+				</div>
+			</div>
+			<scattered-stars></scattered-stars>
+
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,56 @@
+version: '3'
+volumes:
+  deploy-files:
+  deploy-db-data:
+  deploy-redis-data:
+  deploy-uploads:
+services:
+  techbase-crawler-server:
+    image: techbase-crawler:${TAG:-latest}
+    environment:
+      - TIMESCALE_HOST=timescale-db
+      - TIMESCALE_PORT=5432
+      - TZ=Asia/Taipei
+      - NODE_ENV=production
+      - REDIS_HOST=redis
+      - ADMIN_ACCOUNT=admin
+      - ADMIN_SECRET=eRYw45y423r32@et
+      - AWS_ACCESS_KEY_ID=AKIARPGAW4UL5FWBL6G2
+      - AWS_ACCESS_KEY_SECRET=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
+      # - AWS_S3_UPLOAD_BUCKET=ems-deploy-photo
+      - AWS_S3_UPLOAD_BUCKET=ems-deploy-photo-dev
+      # - AWS_S3_IMAGE_BASE_URL=https://ems-deploy-photo.s3.amazonaws.com/
+      - AWS_S3_IMAGE_BASE_URL=https://ems-deploy-photo-dev.s3.amazonaws.com/
+      - LOCAL_IMAGE_BASE_URL=http://211.75.8.115:8109/
+      # Mongo
+      - MONGO_HOST=192.168.1.11
+      - MONGO_PORT=28018
+      - MONGO_USER=dev
+      - MONGO_PASSWORD=dev
+      - MONGO_DB=ems-deploy-server
+      - MONGO_ACCESS_LOGS_COLLECTIONS=accessLogs-prod
+      - MONGO_SYS_LOGS_COLLECTIONS=sysLogss-prod
+    ports:
+      - 3002:3002
+
+  redis:
+    image: redis:latest
+    container_name: techbase-crawler-redis
+    ports:
+      - 6790:6379
+    expose:
+      - 6379
+    volumes:
+      - deploy-redis-data:/data
+
+  mongodb:
+    image: mongo
+    restart: always
+    container_name: techbase-crawler-mongo
+    ports:
+      - 27018:27017
+    expose:
+      - 27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: user
+      MONGO_INITDB_ROOT_PASSWORD: password

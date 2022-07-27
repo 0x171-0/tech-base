@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="_csrf" th:content="${_csrf.token}" />
+		<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+		<title>TechBase</title>
+
+		<link rel="icon" type="image/png"
+			href="https://s3-ap-northeast-1.amazonaws.com/white-100.online/TechBase/assets/trail-sign-outline.svg" />
+
+		<link href="./css/main.css" type="text/css" rel="stylesheet">
+		<link href="./css/profile.css" type="text/css" rel="stylesheet">
+		<link href="./css/components/tab.css" type="text/css" rel="stylesheet">
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js" defer></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9" defer></script>
+		<script src="./js/components/nav.js" defer></script>
+		<script src="./js/components/registerSystem.js" type="module" defer></script>
+
+		<script src="./js/profile/index.js" type="module" defer></script>
+		<script src="./js/profile/reviewSystem/bookmark.js" type="module" defer></script>
+		<script src="./js/profile/reviewSystem/post.js" type="module" defer></script>
+		<script src="./js/profile/follow.js" type="module" defer></script>
+		<script src="./js/profile/history.js" type="module" defer></script>
+		<script src="./js/profile/images.js" type="module" defer></script>
+	</head>
+
+	<body>
+		<template>
+			<div class="postNewsContainer">
+				<a class="clipCorner"></a>
+				<div class="clip" id="ID_5f37c2b1fb521a5225da183c" style="z-index: 9999;">
+					<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+						xmlns="http://www.w3.org/2000/svg">
+						<path
+							d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z">
+						</path>
+						<path fill-rule="evenodd"
+							d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z">
+						</path>
+					</svg>
+				</div>
+				<a class="relWrapper"
+					href="/newsDetails.html?title=Amazon%20starts%20online%20drug%20sales%20in%20Indian%20city">
+					<div class="relTime">原新聞時間</div>
+					<h6 class="relTitle">原新聞標題</h6>
+					<h6 class="comTitle">評論標題</h6>
+					<p class="comContent">
+						評論內容
+					</p>
+				</a>
+			</div>
+		</template>
+
+		<template>
+			<div class="history">
+				<div class="clip" style="z-index: 9999;"><svg width="1em" height="1em" viewBox="0 0 16 16"
+						class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						<path
+							d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z">
+						</path>
+						<path fill-rule="evenodd"
+							d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z">
+						</path>
+					</svg></div><a class="clipCorner"></a><a class="hisWrapper" href="">
+					<div class="hisTime"></div><span class="hisTitle">
+					</span>
+					<p class="hisContent"></p>
+				</a>
+			</div>
+		</template>
+
+		<tech-nav></tech-nav>
+		<sign-form></sign-form>
+
+		<div class="container tabsBox">
+
+			<ul class="tabNavBar">
+				<div class="tab" id="activeTab"><a>POSTS</a></div>
+				<div class="tab"><a>FOLLOWING</a></div>
+				<div class="tab"><a>BOOKMARKS</a></div>
+				<div class="tab"><a>WATCH LATER</a></div>
+			</ul>
+
+			<section class="tabContain " id="activeTabContainer">
+
+				<span class="smalltri">
+					<i class="fa fa-star"></i>
+				</span>
+
+				<section>
+
+					<div class='userMain'>
+						<div class="userLeft">
+							<div class='userImagesContainer'>
+								<form method="post" action="/api/1.0/user/uploadImage" class="uploadImg"
+									name="uploadImg" enctype="multipart/form-data">
+
+									<label class="imgBtn imgBtn-info">
+
+										<input id="uploadImg" style="display:none;" type="file" name="userImage"
+											required="required" accept=".jpg,.jpeg, .png">
+
+										<svg width="0.7em" height="0.7em" viewBox="0 0 16 16" class="bi bi-plus"
+											fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd"
+												d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z" />
+											<path fill-rule="evenodd"
+												d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z" />
+										</svg>
+
+									</label>
+
+								</form>
+
+								<div class="userImg">
+									<svg class="userImgDefault" width="9em" height="9em" viewBox="0 0 16 16"
+										class="bi bi-person-fill" fill="currentColor"
+										xmlns="http://www.w3.org/2000/svg">
+										<path fill-rule="evenodd"
+											d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+									</svg>
+
+									<img id="userImg" src="" alt="">
+								</div>
+							</div>
+							<div class="userText">
+								<div>
+									<div id="userDiv">
+
+										<h1 class="userName"></h1>
+
+									</div>
+								</div>
+								<textarea class="userIntro" maxlength="50">相信科技可以讓世界變得更好的宅宅</textarea>
+							</div>
+						</div>
+
+						<div class="userRight">
+							<div class="infoSum">
+								<h3 class="sumtitle">Posts</h3>
+								<h3 class="sumNum postsSum">0</h3>
+							</div>
+							<div class="infoSum">
+								<h3 class="sumtitle">Followers</h3>
+								<h3 class="sumNum followSum">0</h3>
+							</div>
+							<div class="infoSum">
+								<h3 class="sumtitle">Bookmarks</h3>
+								<h3 class="sumNum bookSum">0</h3>
+							</div>
+						</div>
+					</div>
+
+					<div class="folderDiv">
+						<span class=' folder'>Folders of posts : </span>
+						<span class='postsFolderTitle'>All</span>
+					</div>
+
+				</section>
+
+				<div class="toolBar">
+
+					<a class='postsFolderDelete'>
+						<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder-minus" fill="currentColor"
+							xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd"
+								d="M9.828 4H2.19a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91H9v1H2.826a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181L15.546 8H14.54l.265-2.91A1 1 0 0 0 13.81 4H9.828zm-2.95-1.707L7.587 3H2.19c-.24 0-.47.042-.684.12L1.5 2.98a1 1 0 0 1 1-.98h3.672a1 1 0 0 1 .707.293z" />
+							<path fill-rule="evenodd"
+								d="M11 11.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z" />
+						</svg>
+					</a>
+
+					<a class='postsLabelWrap'>
+						<label for="" class="postsLabel">
+							<select class="postsFolder" name="postsFolder" autofocus>
+								<option>All</option>
+								<option>Default</option>
+							</select>
+
+							<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder" fill="currentColor"
+								xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M9.828 4a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 6.173 2H2.5a1 1 0 0 0-1 .981L1.546 4h-1L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3v1z" />
+								<path fill-rule="evenodd"
+									d="M13.81 4H2.19a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zM2.19 3A2 2 0 0 0 .198 5.181l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3H2.19z" />
+							</svg>
+						</label>
+					</a>
+				</div>
+
+				<div class="noMoreDataPost noMoreData">
+					<img src="https://s3-ap-northeast-1.amazonaws.com/white-100.online/TechBase/assets/noMoreData.png"
+						alt="">
+					<span>There is no more data...</span>
+				</div>
+
+
+
+				<div class="postContainer proContainer" id="postContainer">
+
+				</div>
+
+			</section>
+
+			<section class="tabContain">
+
+				<h1 class="profileTitle">Following</h1>
+
+				<div class="noMoreDataFollow noMoreData">
+					<img src="https://s3-ap-northeast-1.amazonaws.com/white-100.online/TechBase/assets/noMoreData.png"
+						alt="">
+					<span>There is no more data...</span>
+				</div>
+
+				<div id="followContainer">
+				</div>
+
+			</section>
+
+			<section class="tabContain">
+
+				<div class="folderDivBook">
+					<span class='folder'>Folder : </span>
+					<span class='booksFolderTitle'>All</span>
+				</div>
+
+				<h1 class="profileTitle">Bookmarks</h1>
+				<div class="toolBar">
+					<a class='booksFolderDelete'>
+						<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder-minus" fill="currentColor"
+							xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd"
+								d="M9.828 4H2.19a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91H9v1H2.826a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181L15.546 8H14.54l.265-2.91A1 1 0 0 0 13.81 4H9.828zm-2.95-1.707L7.587 3H2.19c-.24 0-.47.042-.684.12L1.5 2.98a1 1 0 0 1 1-.98h3.672a1 1 0 0 1 .707.293z" />
+							<path fill-rule="evenodd"
+								d="M11 11.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z" />
+						</svg>
+
+					</a>
+
+					<a class='booksLabelWrap'>
+						<label for="" class="booksLabel">
+							<select class="booksFolder" name="booksFolder" autofocus>
+								<option>All</option>
+								<option>Default</option>
+							</select>
+
+							<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder" fill="currentColor"
+								xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M9.828 4a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 6.173 2H2.5a1 1 0 0 0-1 .981L1.546 4h-1L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3v1z" />
+								<path fill-rule="evenodd"
+									d="M13.81 4H2.19a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zM2.19 3A2 2 0 0 0 .198 5.181l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3H2.19z" />
+							</svg>
+						</label>
+					</a>
+				</div>
+				<div class="noMoreDataBook noMoreData">
+					<img src="https://s3-ap-northeast-1.amazonaws.com/white-100.online/TechBase/assets/noMoreData.png"
+						alt="">
+					<span>There is no more data...</span>
+				</div>
+				<div id="bookContainer">
+
+				</div>
+
+			</section>
+
+			<section class="tabContain">
+				<div class="toolBar">
+					<a class="watchLater">
+						<svg width="2em" height="1.5em" viewBox="0 0 16 16" class="bi bi-paperclip" fill="currentColor"
+							xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd"
+								d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z" />
+						</svg></a>
+					<a class="getHistory">
+						<svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-clock-history"
+							fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd"
+								d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z" />
+							<path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z" />
+							<path fill-rule="evenodd"
+								d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z" />
+						</svg> </a>
+				</div>
+
+				<h1 class="profileTitle profileTitle4">Watch Later</h1>
+
+				<div class="noMoreDataWatch noMoreData">
+					<img src="https://s3-ap-northeast-1.amazonaws.com/white-100.online/TechBase/assets/noMoreData.png"
+						alt="">
+					<span>There is no more data...</span>
+				</div>
+
+				<div class="hisContainer" id="hisContainer">
+				</div>
+
+			</section>
+
+		</div>
+
+	</body>
+
+</html>

@@ -1,0 +1,55 @@
+textarea,
+.form-column > input[type='text'],
+.form-column > input[type='email'],
+.form-column > input[type='password'] {
+	width: calc(70%);
+	height: 45px;
+	outline: none;
+	border: 1px solid #ddd;
+	padding: 0 10px;
+	border-radius: 2px;
+	color: #333;
+	font-size: 0.8rem;
+	-webkit-transition: all 0.1s linear;
+	-moz-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+}
+
+.form-column input:focus {
+	border-color: #358efb;
+}
+
+.form-column > button {
+	width: calc(70%);
+	height: 45px;
+	background-color: #5fcf80;
+	border: none;
+	outline: none;
+	color: #fff;
+	font-size: 14px;
+	font-weight: normal;
+	padding: 14px 10px;
+	border-radius: 2px;
+	text-transform: uppercase;
+}
+
+.imgBtn-info {
+	margin: 10px 5px;
+}
+.imgBtn {
+	font-size: 0.8rem;
+	height: 45px;
+	padding: 5px 10px;
+	background-color: #cc6504;
+	color: white;
+}
+
+.imgBtn:hover {
+	background-color: #e98c34;
+	color: #ffffff;
+}
+
+#userImage {
+	border: none;
+	outline: none;
+}

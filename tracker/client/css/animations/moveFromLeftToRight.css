@@ -1,0 +1,17 @@
+.moveFromLeftToRight {
+	left: -300px;
+	animation-duration: 50s;
+	animation-name: moveFromLeftToRight;
+}
+
+@keyframes moveFromLeftToRight {
+	from {
+		display: block;
+		left: -100px;
+	}
+
+	to {
+		display: none;
+		left: 2500px;
+	}
+}
